@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=3 uid="uid://main2048uidxx"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_main"]
+[ext_resource type="PackedScene" uid="uid://board2048uidxx" path="res://scenes/board.tscn" id="2_board"]
+[ext_resource type="PackedScene" uid="uid://hud2048uidxx" path="res://scenes/hud.tscn" id="3_hud"]
+[ext_resource type="PackedScene" path="res://scenes/menu.tscn" id="4_menu"]
+
+[ext_resource type="Texture2D" path="res://assets/background/Gemini_Generated_Image_580emc580emc580e.png" id="5_bg"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_main")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_bg")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="DimOverlay" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.45)
+
+[node name="Board" parent="." instance=ExtResource("2_board")]
+visible = false
+layout_mode = 1
+
+[node name="HUD" parent="." instance=ExtResource("3_hud")]
+visible = false
+layout_mode = 1
+
+[node name="Menu" parent="." instance=ExtResource("4_menu")]
+layout_mode = 1

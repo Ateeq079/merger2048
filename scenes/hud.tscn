@@ -1,0 +1,206 @@
+[gd_scene load_steps=2 format=3 uid="uid://hud2048uidxx"]
+
+[ext_resource type="Script" path="res://scripts/hud.gd" id="1_hud"]
+
+[ext_resource type="Texture2D" path="res://assets/icons/newicon.png" id="2_icon"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_glass"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_left = 24
+corner_radius_bottom_right = 24
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 0.5)
+shadow_color = Color(0, 0, 0, 0.2)
+shadow_size = 16
+shadow_offset = Vector2(0, 8)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_retry"]
+bg_color = Color(0.956863, 0.470588, 0.372549, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_left = 20
+corner_radius_bottom_right = 20
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_hud")
+
+[node name="VBox" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TopBar" type="HBoxContainer" parent="VBox"]
+layout_mode = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="Logo" type="TextureRect" parent="VBox/TopBar"]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+texture = ExtResource("2_icon")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="UndoBtn" type="Button" parent="VBox/TopBar"]
+custom_minimum_size = Vector2(100, 60)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_retry")
+theme_override_styles/hover = SubResource("StyleBoxFlat_retry")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_retry")
+theme_override_styles/focus = SubResource("StyleBoxFlat_retry")
+text = "Undo"
+
+[node name="Spacer" type="Control" parent="VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="BottomBar" type="HBoxContainer" parent="VBox"]
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 80
+mouse_filter = 2
+
+[node name="ScoreContainer" type="VBoxContainer" parent="VBox/BottomBar"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="VBox/BottomBar/ScoreContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.8, 0.2, 1)
+theme_override_colors/font_outline_color = Color(0.2, 0.1, 0.05, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 24
+text = "SCORE"
+horizontal_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="VBox/BottomBar/ScoreContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.2, 0.1, 0.05, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 56
+text = "0"
+horizontal_alignment = 1
+
+[node name="BestContainer" type="VBoxContainer" parent="VBox/BottomBar"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="VBox/BottomBar/BestContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.8, 0.2, 1)
+theme_override_colors/font_outline_color = Color(0.2, 0.1, 0.05, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 24
+text = "BEST"
+horizontal_alignment = 1
+
+[node name="BestLabel" type="Label" parent="VBox/BottomBar/BestContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.2, 0.1, 0.05, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 56
+text = "0"
+horizontal_alignment = 1
+
+[node name="GameOverPanel" type="PanelContainer" parent="."]
+visible = false
+custom_minimum_size = Vector2(320, 220)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -110.0
+offset_right = 160.0
+offset_bottom = 110.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_glass")
+
+[node name="VBox" type="VBoxContainer" parent="GameOverPanel"]
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="GameOverPanel/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.956863, 0.470588, 0.372549, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 42
+text = "Game Over!"
+horizontal_alignment = 1
+
+[node name="FinalScore" type="Label" parent="GameOverPanel/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.94902, 0.662745, 0.231373, 1)
+theme_override_font_sizes/font_size = 28
+text = "Final Score: 0"
+horizontal_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="GameOverPanel/VBox"]
+layout_mode = 2
+
+[node name="RetryBtn" type="Button" parent="GameOverPanel/VBox/CenterContainer"]
+custom_minimum_size = Vector2(200, 60)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.960784, 0.937255, 0.894118, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_retry")
+theme_override_styles/hover = SubResource("StyleBoxFlat_retry")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_retry")
+theme_override_styles/focus = SubResource("StyleBoxFlat_retry")
+text = "Try Again"
+
+[node name="WinPanel" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -120.0
+offset_top = 100.0
+offset_right = 120.0
+offset_bottom = 200.0
+grow_horizontal = 2
+
+[node name="VBox" type="VBoxContainer" parent="WinPanel"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="WinPanel/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "You Win!"
+horizontal_alignment = 1
+
+[node name="KeepPlayingBtn" type="Button" parent="WinPanel/VBox"]
+layout_mode = 2
+text = "Keep Playing"

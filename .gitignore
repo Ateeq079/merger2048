@@ -1,0 +1,64 @@
+﻿# ============================================================
+# Godot 4 — .gitignore
+# ============================================================
+
+# Godot import cache & metadata (auto-generated, never commit)
+.godot/
+
+# Compiled GDScript bytecode
+*.gdc
+
+# Compiled translation files
+*.translation
+
+# ============================================================
+# Android build artifacts
+# ============================================================
+
+# Gradle build output
+android/build/
+android/.gradle/
+android/app/build/
+
+# Exported binaries — never commit built releases to source control
+*.apk
+*.aab
+*.obb
+
+# ============================================================
+# Signing & secrets — CRITICAL: never expose these
+# ============================================================
+
+# Keystore file
+*.keystore
+*.jks
+
+# Export presets contain keystore path, alias and password in plain text
+export_presets.cfg
+
+# ============================================================
+# OS / editor junk
+# ============================================================
+
+# Windows
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# VS Code
+.vscode/
+
+# JetBrains / Rider
+.idea/
+*.iml
+
+# ============================================================
+# Logs and test output
+# ============================================================
+tests_output*.txt
+*.log

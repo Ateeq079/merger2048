@@ -1,0 +1,75 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/menu.gd" id="1_menu"]
+
+[ext_resource type="Texture2D" path="res://assets/background/Gemini_Generated_Image_580emc580emc580e.png" id="2_bg"]
+[ext_resource type="Texture2D" path="res://assets/icons/newicon.png" id="3_logo"]
+[ext_resource type="Texture2D" path="res://assets/icons/play-solid-full (1).svg" id="4_play"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_play"]
+bg_color = Color(0.956863, 0.470588, 0.372549, 1)
+corner_radius_top_left = 60
+corner_radius_top_right = 60
+corner_radius_bottom_left = 60
+corner_radius_bottom_right = 60
+shadow_color = Color(0, 0, 0, 0.2)
+shadow_size = 8
+shadow_offset = Vector2(0, 4)
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_menu")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_bg")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="VBox" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = 80.0
+offset_right = -40.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+
+[node name="Logo" type="TextureRect" parent="VBox"]
+layout_mode = 2
+texture = ExtResource("3_logo")
+expand_mode = 1
+stretch_mode = 5
+custom_minimum_size = Vector2(0, 300)
+
+[node name="Spacer" type="Control" parent="VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="StartBtn" type="Button" parent="VBox"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/normal = SubResource("StyleBoxFlat_play")
+theme_override_styles/hover = SubResource("StyleBoxFlat_play")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_play")
+theme_override_styles/focus = SubResource("StyleBoxFlat_play")
+icon = ExtResource("4_play")
+icon_alignment = 1
+expand_icon = true
+
+
